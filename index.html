@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>FilmZone</title>
-    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -44,8 +44,9 @@
         
         <!--Contenido Principal-->
         <main>
-            <h2>ùltimas Películas Agregadas</h2>
-            <article>
+            <h2>últimas Películas Agregadas</h2>
+            <article class="pelicula" data-titulo="When The Wind Blows" data-director="Jimmy T. Murakami" data-año="1986" data-sinopsis="Una pareja de ancianos británicos intenta sobrevivir a los efectos de un ataque nuclear, siguiendo las instrucciones del gobierno." data-imagen="imagenes/fondos/when-the-wind-blows.webp</articleclass>
+                <img src="imagenes/fondos/when-the-wind-blows.webp" alt="When The Wind Blows">
                 <h3>When The Wind Blows</h3>
                 <p>Director:Jimmy T. Murakami</p>
             </article>
@@ -66,6 +67,80 @@
         <p>© 2025 FilmZone. Todos los Derechos Reservados</p>
         <a href="https://instagram.com/FilmZone" target="_blank">Instagram</a>
     </footer>
+    
+    <!-- Modal (ventana emergente) -->
+<div id="modal" class="modal">
+    <div class="modal-contenido">
+        <span class="cerrar">&times;</span>
+        <img id="modal-imagen" src="" alt="Póster de película">
+        <h2 id="modal-titulo"></h2>
+        <p id="modal-info"></p>
+        <button class="cerrar-btn">Cerrar</button>
+    </div>
+</div>
+
+<script>
+    // Seleccionamos todos los elementos con clase "pelicula"
+    const peliculas = document.querySelectorAll('.pelicula');
+    const modal = document.getElementById('modal');
+    const modalImagen = document.getElementById('modal-imagen');
+    const modalTitulo = document.getElementById('modal-titulo');
+    const modalInfo = document.getElementById('modal-info');
+    const cerrarBtn = document.querySelector('.cerrar-btn');
+    const cerrarX = document.querySelector('.cerrar');
+
+    // Función para abrir el modal
+    function abrirModal(pelicula) {
+        const titulo = pelicula.getAttribute('data-titulo');
+        const director = pelicula.getAttribute('data-director');
+        const año = pelicula.getAttribute('data-año');
+        const sinopsis = pelicula.getAttribute('data-sinopsis');
+        const imagen = pelicula.getAttribute('data-imagen');
+
+        modalImagen.src = imagen;
+        modalImagen.alt = titulo;
+        modalTitulo.textContent = titulo;
+        modalInfo.innerHTML = `
+            <strong>Director:</strong> ${director}<br>
+            <strong>Año:</strong> ${año}<br><br>
+            <strong>Sinopsis:</strong><br>
+            ${sinopsis}
+        `;
+
+        modal.style.display = 'block';
+setTimeout(() => {
+    modal.classList.add('mostrar');
+}, 10);
+
+modal.classList.remove('mostrar');
+setTimeout(() => {
+    modal.style.display = 'none';
+}, 300);
+    }
+
+    // Asignamos evento clic a cada película
+    peliculas.forEach(pelicula => {
+        pelicula.addEventListener('click', () => {
+            abrirModal(pelicula);
+        });
+    });
+
+    // Cerrar modal con botón o con X
+    cerrarBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+
+    cerrarX.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+
+    // Cerrar modal si se hace clic fuera del contenido
+    window.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
+</script>
 
 </body>
 </html>
