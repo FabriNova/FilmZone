@@ -6,6 +6,7 @@
     <title>FilmZone</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
     <!--Encabezado de la página-->
@@ -78,9 +79,8 @@
         <button class="cerrar-btn">Cerrar</button>
     </div>
 </div>
-
 <script>
-    // Seleccionamos todos los elementos con clase "pelicula"
+    // Seleccionamos elementos
     const peliculas = document.querySelectorAll('.pelicula');
     const modal = document.getElementById('modal');
     const modalImagen = document.getElementById('modal-imagen');
@@ -91,12 +91,14 @@
 
     // Función para abrir el modal
     function abrirModal(pelicula) {
+        // Obtenemos datos de la película
         const titulo = pelicula.getAttribute('data-titulo');
         const director = pelicula.getAttribute('data-director');
         const año = pelicula.getAttribute('data-año');
         const sinopsis = pelicula.getAttribute('data-sinopsis');
         const imagen = pelicula.getAttribute('data-imagen');
 
+        // Llenamos el modal
         modalImagen.src = imagen;
         modalImagen.alt = titulo;
         modalTitulo.textContent = titulo;
@@ -107,15 +109,11 @@
             ${sinopsis}
         `;
 
+        // Mostramos el modal con animación
         modal.style.display = 'block';
-setTimeout(() => {
-    modal.classList.add('mostrar');
-}, 10);
-
-modal.classList.remove('mostrar');
-setTimeout(() => {
-    modal.style.display = 'none';
-}, 300);
+        // Forzamos un reflow para que la transición funcione
+        void modal.offsetWidth;
+        modal.classList.add('mostrar');
     }
 
     // Asignamos evento clic a cada película
@@ -125,22 +123,22 @@ setTimeout(() => {
         });
     });
 
-    // Cerrar modal con botón o con X
-    cerrarBtn.addEventListener('click', () => {
-        modal.style.display = 'none';
-    });
+    // Función para cerrar
+    function cerrarModal() {
+        modal.classList.remove('mostrar');
+        setTimeout(() => {
+            modal.style.display = 'none';
+        }, 300); // Debe coincidir con la transición CSS (0.3s = 300ms)
+    }
 
-    cerrarX.addEventListener('click', () => {
-        modal.style.display = 'none';
-    });
-
-    // Cerrar modal si se hace clic fuera del contenido
+    // Cerrar con botón, X o clic fuera
+    if (cerrarBtn) cerrarBtn.addEventListener('click', cerrarModal);
+    if (cerrarX) cerrarX.addEventListener('click', cerrarModal);
     window.addEventListener('click', (event) => {
         if (event.target === modal) {
-            modal.style.display = 'none';
+            cerrarModal();
         }
     });
 </script>
-
 </body>
 </html>
