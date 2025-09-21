@@ -1,0 +1,350 @@
+/* ========== ESTILOS GENERALES ========== */
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #141414; /* Fondo por defecto si no hay imagen */
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* ========== HEADER - Cartelera de cine ========== */
+
+header {
+    /* Imagen de cartelera con neón */
+    background-image: url('../imagenes/fondos/header-fondo.webp');
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    color: white;
+    padding: 60px 20px 40px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+/* Overlay para mejorar legibilidad */
+header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparente */
+    z-index: 1;
+}
+
+/* Todo el contenido del header va encima del overlay */
+header * {
+    position: relative;
+    z-index: 2;
+}
+
+header h1 {
+    font-size: 3.5rem;
+    margin: 0 0 20px;
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
+    letter-spacing: 1px;
+}
+
+/* Estilo del formulario de búsqueda */
+header form {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+header input {
+    padding: 12px 20px;
+    width: 350px;
+    max-width: 100%;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    background: rgba(255,255,255,0.9);
+    color: #333;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+header button {
+    padding: 12px 25px;
+    background-color: #e50914; /* Rojo Netflix */
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    transition: background-color 0.3s ease;
+}
+
+header button:hover {
+    background-color: #ff1a25;
+}
+
+/* ========== CONTENEDOR PRINCIPAL ========== */
+
+.contenedor {
+    display: flex;
+    min-height: calc(100vh - 240px); /* Ajusta según header + footer */
+}
+
+/* ========== SIDEBAR - Sala de cine anime ========== */
+
+aside {
+    /* Imagen de sala de cine anime */
+    background-image: url('../imagenes/fondos/sidebar-fondo.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    padding: 30px 20px;
+    width: 280px;
+    box-shadow: 3px 0 15px rgba(0,0,0,0.5);
+    position: relative;
+}
+
+/* Overlay para sidebar */
+aside::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(20, 20, 30, 0.7); /* Azul oscuro semi-transparente */
+    z-index: 1;
+}
+
+aside * {
+    position: relative;
+    z-index: 2;
+}
+
+aside h2 {
+    color: #e50914;
+    font-size: 1.8rem;
+    margin: 0 0 25px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e50914;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+/* Estilo del menú */
+aside ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+aside li {
+    margin: 15px 0;
+}
+
+aside a {
+    color: #6d84b4; /* Azul butaca */
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    display: block;
+    padding: 5px 0;
+}
+
+aside a:hover {
+    color: #a0c3e8;
+    text-decoration: underline;
+}
+
+/* ========== FORMULARIO DE SUSCRIPCIÓN ========== */
+
+aside section {
+    margin-top: 40px;
+    background-color: rgba(30, 30, 40, 0.7); /* Tarjeta semi-transparente */
+    padding: 25px;
+    border-radius: 15px;
+    border: 1px solid rgba(109, 132, 180, 0.3);
+}
+
+aside h3 {
+    color: #e50914;
+    margin: 0 0 20px;
+    font-size: 1.4rem;
+    text-align: center;
+}
+
+aside input, aside button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+aside input {
+    background-color: rgba(255,255,255,0.85);
+    color: #333;
+    font-weight: 500;
+}
+
+aside button {
+    background-color: #e50914;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+aside button:hover {
+    background-color: #ff1a25;
+}
+
+/* ========== MAIN - Collage de pósters ========== */
+
+main {
+    /* Imagen de collage de pósters */
+    background-image: url('../imagenes/fondos/main-fondo.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    flex: 1;
+    padding: 50px;
+    position: relative;
+}
+
+/* Overlay para main */
+main::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Muy oscuro para inmersión */
+    z-index: 1;
+}
+
+main * {
+    position: relative;
+    z-index: 2;
+}
+
+main h2 {
+    color: #e50914;
+    font-size: 2.2rem;
+    margin: 0 0 30px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid rgba(229, 9, 20, 0.5);
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+/* Estilo de las tarjetas de películas */
+article {
+    background-color: rgba(30, 30, 40, 0.7); /* Semi-transparente */
+    padding: 30px;
+    margin-bottom: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    border: 1px solid rgba(100, 100, 120, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+article:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+}
+
+article h3 {
+    color: #ffffff;
+    margin: 0 0 15px;
+    font-size: 1.8rem;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+article p {
+    color: #cccccc;
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+
+/* ========== FOOTER - Película Kodak (grano) ========== */
+
+footer {
+    /* Imagen de película Kodak */
+    background-image: url('../imagenes/fondos/footer-fondo.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #aaaaaa;
+    text-align: center;
+    padding: 40px 20px;
+    font-size: 0.95rem;
+    position: relative;
+    box-shadow: 0 -3px 10px rgba(0,0,0,0.5);
+}
+
+/* Overlay para footer */
+footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(15, 15, 25, 0.9); /* Casi negro */
+    z-index: 1;
+}
+
+footer * {
+    position: relative;
+    z-index: 2;
+}
+
+footer a {
+    color: #6d84b4;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #a0c3e8;
+    text-decoration: underline;
+}
+
+/* ========== MEDIA QUERIES (para móviles) ========== */
+
+@media (max-width: 768px) {
+    .contenedor {
+        flex-direction: column;
+        min-height: auto;
+    }
+
+    aside {
+        width: 100%;
+        padding: 20px;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.5);
+    }
+
+    main {
+        padding: 30px 20px;
+    }
+
+    header h1 {
+        font-size: 2.5rem;
+    }
+
+    header input {
+        width: 100%;
+        max-width: 300px;
+    }
+}
